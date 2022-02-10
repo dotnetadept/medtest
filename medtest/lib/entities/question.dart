@@ -5,10 +5,10 @@ class Question {
   double value;
   List<QuestionOption> options;
 
-  Map toJson() => {'text': text, 'value': value, 'options': options};
-
   Question.fromJson(Map<String, dynamic> json)
       : text = json['text'],
         value = json['value'],
-        options = json['options'];
+        options = json['options']
+            .map<QuestionOption>((q) => QuestionOption.fromJson(q))
+            .toList();
 }
