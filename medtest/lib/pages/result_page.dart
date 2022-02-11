@@ -18,6 +18,14 @@ class _ResultPageState extends State<ResultPage> {
               child: Row(
                 children: [
                   getBackButton(),
+                  Container(
+                    width: 10,
+                  ),
+                  getSaveButton(),
+                  Container(
+                    width: 10,
+                  ),
+                  getExitButton(),
                 ],
               ),
             )
@@ -38,6 +46,38 @@ class _ResultPageState extends State<ResultPage> {
             'Назад',
           ),
           Icon(Icons.arrow_back),
+        ],
+      ),
+    );
+  }
+
+  Widget getSaveButton() {
+    return TextButton(
+      onPressed: () {
+        Navigator.pop(context);
+      },
+      child: Row(
+        children: [
+          Text(
+            'Сохранить',
+          ),
+          Icon(Icons.save),
+        ],
+      ),
+    );
+  }
+
+  Widget getExitButton() {
+    return TextButton(
+      onPressed: () {
+        Navigator.pop(context);
+      },
+      child: Row(
+        children: [
+          Text(
+            'Выход',
+          ),
+          Icon(Icons.exit_to_app),
         ],
       ),
     );

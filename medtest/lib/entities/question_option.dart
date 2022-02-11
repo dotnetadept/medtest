@@ -1,7 +1,7 @@
 class QuestionOption {
   String text;
   double value;
-  bool isSelected;
+  bool isSelected = false;
 
   QuestionOption.fromJson(Map<String, dynamic> json)
       : text = json['text'],

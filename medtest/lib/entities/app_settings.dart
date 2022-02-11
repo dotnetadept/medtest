@@ -5,9 +5,13 @@ class AppSettings {
   String doctorSurname;
   String doctorLastname;
   String hospitalName;
-  String diagnosis;
 
-  int questionColumnsCount;
+  String patientName;
+  String patientSurname;
+  String patientLastname;
+  int age;
+  String diagnosis;
+  String medCardId;
 
   Map toJson() => {
         'windowTitle': windowTitle,
@@ -15,8 +19,7 @@ class AppSettings {
         'doctorSurname': doctorSurname,
         'doctorLastname': doctorLastname,
         'hospitalName': hospitalName,
-        'diagnosis': diagnosis,
-        'questionColumnsCount': questionColumnsCount
+        'diagnosis': diagnosis
       };
 
   AppSettings.fromJson(Map<String, dynamic> json)
@@ -25,6 +28,5 @@ class AppSettings {
         doctorSurname = json['doctorSurname'],
         doctorLastname = json['doctorLastname'],
         hospitalName = json['hospitalName'],
-        diagnosis = json['diagnosis'],
-        questionColumnsCount = json['questionColumnsCount'];
+        diagnosis = json['diagnosis'];
 }
