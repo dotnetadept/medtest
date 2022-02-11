@@ -21,14 +21,15 @@ class _TestPageState extends State<TestPage> {
       for (int j = 0; j < AppState.questionColumns.length; j++) {
         _questions
             .add(getQuestionWidget(AppState.questionColumns[i].questions[j]));
+        _questions.add(Expanded(child: Container()));
       }
 
       if (i == AppState.questionColumns.length - 1) {
         _questions.add(Row(children: [
           Expanded(child: Container()),
-          getNextButton(),
           Container(
-            width: 20,
+            margin: EdgeInsets.fromLTRB(30, 30, 30, 45),
+            child: getNextButton(),
           ),
         ]));
       }
@@ -59,7 +60,7 @@ class _TestPageState extends State<TestPage> {
     }
 
     return Container(
-      padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
+      padding: EdgeInsets.fromLTRB(10, 20, 10, 10),
       child: Column(
         children: [
           Row(
@@ -67,7 +68,7 @@ class _TestPageState extends State<TestPage> {
               Expanded(
                 child: Text(
                   question.text,
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                   textAlign: TextAlign.start,
                 ),
               ),

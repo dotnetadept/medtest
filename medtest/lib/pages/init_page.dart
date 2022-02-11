@@ -36,15 +36,35 @@ class _InitPageState extends State<InitPage> {
         body: Center(
           child: Row(
             children: <Widget>[
-              Container(
-                child: Row(
-                  children: [
-                    getDoctorInfo(),
-                    getPatientInfo(),
-                    getNextButton(),
-                  ],
-                ),
-              )
+              Expanded(
+                child: Container(),
+              ),
+              Row(
+                children: [
+                  Column(children: [
+                    Expanded(
+                      child: Container(),
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        getDoctorInfo(),
+                        getPatientInfo(),
+                      ],
+                    ),
+                    Container(
+                      padding: EdgeInsets.fromLTRB(0, 0, 30, 0),
+                      child: getNextButton(),
+                    ),
+                    Expanded(
+                      child: Container(),
+                    ),
+                  ]),
+                ],
+              ),
+              Expanded(
+                child: Container(),
+              ),
             ],
           ),
         ),
@@ -71,7 +91,7 @@ class _InitPageState extends State<InitPage> {
             child: Column(
               children: [
                 Container(
-                  height: 10,
+                  height: 20,
                 ),
                 TextFormField(
                   controller: _tecDoctorName,
@@ -87,7 +107,7 @@ class _InitPageState extends State<InitPage> {
                   },
                 ),
                 Container(
-                  height: 10,
+                  height: 20,
                 ),
                 TextFormField(
                   controller: _tecDoctorSurname,
@@ -103,7 +123,7 @@ class _InitPageState extends State<InitPage> {
                   },
                 ),
                 Container(
-                  height: 10,
+                  height: 20,
                 ),
                 TextFormField(
                   controller: _tecDoctorLastname,
@@ -119,7 +139,7 @@ class _InitPageState extends State<InitPage> {
                   },
                 ),
                 Container(
-                  height: 10,
+                  height: 20,
                 ),
                 TextFormField(
                   controller: _tecHospitalName,
@@ -172,7 +192,7 @@ class _InitPageState extends State<InitPage> {
             child: Column(
               children: [
                 Container(
-                  height: 10,
+                  height: 20,
                 ),
                 TextFormField(
                   controller: _tecPatientName,
@@ -188,7 +208,7 @@ class _InitPageState extends State<InitPage> {
                   },
                 ),
                 Container(
-                  height: 10,
+                  height: 20,
                 ),
                 TextFormField(
                   controller: _tecPatientSurname,
@@ -204,7 +224,7 @@ class _InitPageState extends State<InitPage> {
                   },
                 ),
                 Container(
-                  height: 10,
+                  height: 20,
                 ),
                 TextFormField(
                   controller: _tecPatientLastname,
@@ -220,7 +240,7 @@ class _InitPageState extends State<InitPage> {
                   },
                 ),
                 Container(
-                  height: 10,
+                  height: 20,
                 ),
                 TextFormField(
                   controller: _tecAge,
@@ -239,7 +259,7 @@ class _InitPageState extends State<InitPage> {
                   },
                 ),
                 Container(
-                  height: 10,
+                  height: 20,
                 ),
                 TextFormField(
                   controller: _tecDiagnosis,
@@ -255,7 +275,7 @@ class _InitPageState extends State<InitPage> {
                   },
                 ),
                 Container(
-                  height: 10,
+                  height: 20,
                 ),
                 TextFormField(
                   controller: _tecMedCardId,

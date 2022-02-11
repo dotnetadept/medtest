@@ -5,5 +5,7 @@
     "doctorLastname": "отчество",
     "hospitalName": "название больницы",
     "diagnosis": "инфаркт мозжечка",
-    "questionColumnsCount": 3
+    "decisionValue": 13.0,
+    "positive": "Вероятность инфаркта мозжечка низкая",
+    "negative": "Вероятность инфаркта мозжечка высокая"
 }

@@ -3,10 +3,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:medtest/entities/app_settings.dart';
-import 'package:medtest/entities/decision.dart';
-import 'package:medtest/entities/question.dart';
 import 'package:medtest/entities/question_column.dart';
 import 'package:medtest/pages/init_page.dart';
+import 'package:medtest/pages/result_page.dart';
 import 'package:medtest/state/app_state.dart';
 import 'package:window_size/window_size.dart';
 
@@ -28,6 +27,17 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(),
+          // contentPadding: EdgeInsets.symmetric(
+          //   vertical: 22,
+          //   horizontal: 26,
+          // ),
+          labelStyle: TextStyle(
+            fontSize: 20,
+            //decorationColor: Colors.red,
+          ),
+        ),
         textButtonTheme: TextButtonThemeData(
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Colors.blue),
@@ -37,7 +47,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const HomePage(),
+      home: HomePage(),
     );
   }
 }
@@ -62,16 +72,10 @@ class _HomePageState extends State<HomePage> {
             .map((data) => QuestionColumn.fromJson(data))
             .toList();
 
-        File('assets/cfg/decisions.json').readAsString().then((value) {
-          AppState.decisions = (json.decode(value) as List)
-              .map((data) => Decision.fromJson(data))
-              .toList();
+        setWindowTitle(AppState.appSettings.windowTitle);
 
-          setWindowTitle(AppState.appSettings.windowTitle);
-
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => InitPage()));
-        });
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => InitPage()));
       });
     });
   }
