@@ -1,5 +1,9 @@
 {
     "windowTitle": "Диагностика инфаркта мозжечка",
+    "doctorName": "Имя",
+    "doctorSurname": "фамилия",
+    "doctorLastname": "отчество",
+    "hospitalName": "название больницы",
     "diagnosis": "инфаркт мозжечка",
-    "questionColumnsCount": "3"
+    "questionColumnsCount": 3
 }

@@ -13,12 +13,11 @@ class _ResultPageState extends State<ResultPage> {
     return Scaffold(
       body: Center(
         child: Row(
-          //mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
               child: Row(
                 children: [
-                  getNextButton(),
+                  getBackButton(),
                 ],
               ),
             )
@@ -28,7 +27,7 @@ class _ResultPageState extends State<ResultPage> {
     );
   }
 
-  Widget getNextButton() {
+  Widget getBackButton() {
     return TextButton(
       onPressed: () {
         Navigator.pop(context);

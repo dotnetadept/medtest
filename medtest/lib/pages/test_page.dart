@@ -14,7 +14,6 @@ class _TestPageState extends State<TestPage> {
     return Scaffold(
       body: Center(
         child: Row(
-          //mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
               child: Row(

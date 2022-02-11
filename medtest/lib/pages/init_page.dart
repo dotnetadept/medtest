@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:medtest/pages/result_page.dart';
 import 'package:medtest/pages/test_page.dart';
+import 'package:medtest/state/app_state.dart';
 
 class InitPage extends StatefulWidget {
   const InitPage({Key key}) : super(key: key);
@@ -10,23 +10,37 @@ class InitPage extends StatefulWidget {
 }
 
 class _InitPageState extends State<InitPage> {
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  TextEditingController _tecDoctorName =
+      TextEditingController(text: AppState.appSettings.doctorName);
+  TextEditingController _tecDoctorSurname =
+      TextEditingController(text: AppState.appSettings.doctorSurname);
+  TextEditingController _tecDoctorLastname =
+      TextEditingController(text: AppState.appSettings.doctorLastname);
+  TextEditingController _tecDiagnosis =
+      TextEditingController(text: AppState.appSettings.diagnosis);
+  TextEditingController _tecHospitalName =
+      TextEditingController(text: AppState.appSettings.hospitalName);
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Row(
-          //mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              child: Row(
-                children: [
-                  getDoctorInfo(),
-                  getPatientInfo(),
-                  getNextButton(),
-                ],
-              ),
-            )
-          ],
+    return Form(
+      key: _formKey,
+      child: Scaffold(
+        body: Center(
+          child: Row(
+            children: <Widget>[
+              Container(
+                child: Row(
+                  children: [
+                    getDoctorInfo(),
+                    getPatientInfo(),
+                    getNextButton(),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -54,7 +68,7 @@ class _InitPageState extends State<InitPage> {
                   height: 10,
                 ),
                 TextField(
-                  controller: TextEditingController(),
+                  controller: _tecDoctorName,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Имя',
@@ -64,7 +78,7 @@ class _InitPageState extends State<InitPage> {
                   height: 10,
                 ),
                 TextField(
-                  controller: TextEditingController(),
+                  controller: _tecDoctorSurname,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Фамилия',
@@ -74,7 +88,7 @@ class _InitPageState extends State<InitPage> {
                   height: 10,
                 ),
                 TextField(
-                  controller: TextEditingController(),
+                  controller: _tecDoctorLastname,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Отчество',
@@ -84,7 +98,7 @@ class _InitPageState extends State<InitPage> {
                   height: 10,
                 ),
                 TextField(
-                  controller: TextEditingController(),
+                  controller: _tecHospitalName,
                   minLines: 3,
                   maxLines: 3,
                   decoration: InputDecoration(
@@ -171,7 +185,7 @@ class _InitPageState extends State<InitPage> {
                   height: 10,
                 ),
                 TextField(
-                  controller: TextEditingController(),
+                  controller: _tecDiagnosis,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Диагноз',

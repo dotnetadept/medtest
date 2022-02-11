@@ -1,15 +1,21 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:global_configuration/global_configuration.dart';
+import 'package:medtest/entities/app_settings.dart';
+import 'package:medtest/entities/decision.dart';
+import 'package:medtest/entities/question.dart';
 import 'package:medtest/pages/init_page.dart';
+import 'package:medtest/state/app_state.dart';
 import 'package:window_size/window_size.dart';
 
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await GlobalConfiguration().loadFromAsset('app_settings').then((value) {
-    setWindowTitle(GlobalConfiguration().getValue('windowTitle'));
-    runApp(MyApp());
-  });
+  setWindowTitle('Загрузка');
+
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -31,7 +37,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const InitPage(),
+      home: const HomePage(),
     );
   }
 }
@@ -45,12 +51,41 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    File('assets/cfg/app_settings.json').readAsString().then((value) {
+      AppState.appSettings = AppSettings.fromJson(jsonDecode(value));
+
+      File('assets/cfg/questions.json').readAsString().then((value) {
+        AppState.questions = (json.decode(value) as List)
+            .map((data) => Question.fromJson(data))
+            .toList();
+
+        File('assets/cfg/decisions.json').readAsString().then((value) {
+          AppState.decisions = (json.decode(value) as List)
+              .map((data) => Decision.fromJson(data))
+              .toList();
+
+          setWindowTitle(AppState.appSettings.windowTitle);
+
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => InitPage()));
+        });
+      });
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[],
+          children: <Widget>[
+            CircularProgressIndicator(),
+          ],
         ),
       ),
     );
