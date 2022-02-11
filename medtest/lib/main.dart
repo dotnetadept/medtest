@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:global_configuration/global_configuration.dart';
+import 'package:medtest/pages/init_page.dart';
 import 'package:window_size/window_size.dart';
 
 void main() async {
@@ -21,8 +22,16 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        textButtonTheme: TextButtonThemeData(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(Colors.blue),
+            foregroundColor: MaterialStateProperty.all(Colors.white),
+            padding: MaterialStateProperty.all(EdgeInsets.all(20)),
+            overlayColor: MaterialStateProperty.all(Colors.blueAccent),
+          ),
+        ),
       ),
-      home: const HomePage(),
+      home: const InitPage(),
     );
   }
 }
